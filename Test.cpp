@@ -9,6 +9,25 @@ Color darkGreen = { 43, 51, 24, 255 };
 int CellSize = 30;
 int CellCount = 25;
 
+class Snake
+{
+public:
+	bool addSegment = false;
+
+	void Update()
+	{
+		body.push_front(Vector2Add(body[0], direction));
+		if(addSegment == true)
+		{
+			addSegment = false;
+		}
+		else
+		{
+			body.pop_back();
+		}
+	}
+};
+
 class Food
 {
 public:
@@ -38,6 +57,18 @@ public:
 		float x = GetRandomValue(0, CellCount - 1);
 		float y = GetRandomValue(0, CellCount - 1);
 		return Vector2{ x, y };
+	}
+};
+
+class Game
+{
+public:
+	void CheckCollisionWithFood()
+	{
+		if(Vector2Equals(snake.body[0], food.position));
+		{
+			snake.addSegment = true;
+		}
 	}
 };
 
