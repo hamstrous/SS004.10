@@ -71,8 +71,33 @@ public:
 	}
 };
 
+int Conflict() {
+	cout << "Starting the game..." << endl;
+	InitWindow(cellSize * cellCount, cellSize * cellCount, "Retro Snake");
+	SetTargetFPS(60);
+
+	Food food = Food();
+	Ran snake = Ran();
+
+
+	while (WindowShouldClose() == false)
+	{
+		BeginDrawing();
+		//Drawing
+		food.Draw();
+		snake.Draw();
+		ClearBackground(green);
+		EndDrawing();
+	}
+
+	CloseWindow();
+	return 0;
+}
+
 int main()
 {
+	Conflict();
+	return 0;
 	cout << "Starting the game..." << endl;
 	InitWindow(cellSize * cellCount, cellSize * cellCount, "Retro Snake");
 	SetTargetFPS(60);
