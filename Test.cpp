@@ -23,7 +23,7 @@ bool eventTriggered(double interval)
 	}
 	return false;
 }
-class Snake
+class Ran
 {
 public:
 	deque<Vector2> body = {Vector2{6, 9}, Vector2{5, 9}, Vector2{4, 9}};
@@ -78,7 +78,7 @@ int main()
 	SetTargetFPS(60);
 
 	Food food = Food();
-	Snake snake = Snake();
+	Ran snake = Ran();
 	
 
 	while (WindowShouldClose() == false)
