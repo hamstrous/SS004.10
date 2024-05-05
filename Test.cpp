@@ -1,3 +1,4 @@
+
 #include <iostream>
 #include <raylib.h>
 #include <deque>
@@ -13,6 +14,19 @@ int cellCount = 25;
 
 double lastUpdateTime = 0;
 
+
+bool ElementInDeque(Vector2 element, deque<Vector2> deque)
+{
+	for (unsigned int i = 0; i < deque.size(); i++)
+	{
+		if (Vector2Equals(deque[i], element))
+		{
+			return true;
+		}
+	}
+	return false;
+}
+
 bool eventTriggered(double interval)
 {
 	double current = GetTime();
@@ -26,8 +40,9 @@ bool eventTriggered(double interval)
 class Snake
 {
 public:
-	deque<Vector2> body = {Vector2{6, 9}, Vector2{5, 9}, Vector2{4, 9}};
-	Vector2 direction = {1, 0};
+	bool addSegment = false;
+	deque<Vector2> body = { Vector2{6, 9}, Vector2{5, 9}, Vector2{4, 9} };
+	Vector2 direction = { 1, 0 };
 
 	void Draw()
 	{
@@ -35,11 +50,10 @@ public:
 		{
 			float x = body[i].x;
 			float y = body[i].y;
-			Rectangle segment = Rectangle{x * cellSize, y * cellSize, (float)cellSize, (float)cellSize};
+			Rectangle segment = Rectangle{ x * cellSize, y * cellSize, (float)cellSize, (float)cellSize };
 			DrawRectangleRounded(segment, 0.5, 6, darkGreen);
 		}
 	}
-	bool addSegment = false;
 
 	void Update()
 	{
@@ -83,19 +97,28 @@ public:
 class Game
 {
 public:
+	Snake snake = Snake();
 	Food food = Food();
-  Snake snake = Snake();
 
-  void draw()
-  {
-    food.Draw();
-    snake.Draw();
-  }
+	void CheckCollisionWithFood()
+	{
+		if (Vector2Equals(snake.body[0], food.position))
+		{
+			food.position = food.GenerateRandomPos();
+		}
+	}
 
-  void update()
-  {
-    snake.Update();
-  }
+	void draw()
+	{
+		food.Draw();
+		snake.Draw();
+		CheckCollisionWithFood();
+	}
+
+	void update()
+	{
+		snake.Update();
+	}
 
 };
 int main()
@@ -104,32 +127,32 @@ int main()
 	InitWindow(cellSize * cellCount, cellSize * cellCount, "Retro Snake");
 	SetTargetFPS(60);
 
-  Game game = Game();
+	Game game = Game();
 	while (WindowShouldClose() == false)
 	{
 		BeginDrawing();
 
-		if(eventTriggered(0.2))
+		if (eventTriggered(0.2))
 		{
 			game.snake.Update();
 		}
 
-    if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1)
-    {
-      game.snake.direction = {0, -1};
-    }
-    if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1)
-    {
-      game.snake.direction = {0, 1};
-    }
-    if (IsKeyDown(KEY_LEFT) && game.snake.direction.x != 1)
-    {
-      game.snake.direction = {-1, 0};
-    }
-    if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1)
-    {
-      game.snake.direction = {1, 0};
-    }
+		if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1)
+		{
+			game.snake.direction = { 0, -1 };
+		}
+		if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1)
+		{
+			game.snake.direction = { 0, 1 };
+		}
+		if (IsKeyDown(KEY_LEFT) && game.snake.direction.x != 1)
+		{
+			game.snake.direction = { -1, 0 };
+		}
+		if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1)
+		{
+			game.snake.direction = { 1, 0 };
+		}
 		//Drawing
 		ClearBackground(green);
 		game.draw();
