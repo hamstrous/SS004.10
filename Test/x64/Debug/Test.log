@@ -1,6 +1,6 @@
 ﻿  Test.cpp
-D:\Github\SS004.10\Test.cpp(63,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(63,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(68,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Github\SS004.10\Test.cpp(69,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Github\SS004.10\Test.cpp(93,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(93,35): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(98,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Github\SS004.10\Test.cpp(99,11): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
   Test.vcxproj -> D:\Github\SS004.10\x64\Debug\Test.exe
