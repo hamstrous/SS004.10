@@ -164,6 +164,8 @@ int main()
 		}
 		//Drawing
 		ClearBackground(green);
+		DrawRectangleLinesEx(Rectangle{(float)offset-5, (float)offset-5, 
+			(float)cellSize*cellCount+10, (float)cellSize*cellCount+10}, 5, darkGreen);
 		game.draw();
 		EndDrawing();
 	}
