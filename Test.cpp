@@ -106,6 +106,7 @@ class Game
 public:
 	Snake snake = Snake();
 	Food food = Food();
+	int score = 0;
 
 	void CheckCollisionWithFood()
 	{
@@ -113,6 +114,7 @@ public:
 		{
 			food.position = food.GenerateRandomPos();
 			snake.addSegment = true;
+			score++;
 		}
 	}
 
@@ -121,6 +123,10 @@ public:
 		food.Draw();
 		snake.Draw();
 		CheckCollisionWithFood();
+	}
+
+	void GameOver() {
+		score = 0;
 	}
 
 	void update()
@@ -163,6 +169,8 @@ int main()
 		}
 		//Drawing
 		ClearBackground(green);
+		int offset = 75;
+		DrawText(TextFormat("%i", game.score), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
 		game.draw();
 		EndDrawing();
 	}
