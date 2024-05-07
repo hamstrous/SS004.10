@@ -106,14 +106,39 @@ class Game
 public:
 	Snake snake = Snake();
 	Food food = Food();
+	Sound eatSound;
+	Sound wallSound;
+
+	Game()
+	{
+		InitAudioDevice();
+		eatSound = LoadSound("Sound/Sounds_eat.mp3");
+		wallSound = LoadSound("Sound/Sounds_wall.mp3");
+	}
+
+	~Game()
+	{
+		UnloadSound(eatSound);
+		UnloadSound(wallSound);
+		CloseAudioDevice();
+	}
 
 	void CheckCollisionWithFood()
 	{
 		if (Vector2Equals(snake.body[0], food.position))
-		{
+		{	
 			food.position = food.GenerateRandomPos();
 			snake.addSegment = true;
+			PlaySound(eatSound);
 		}
+	}
+
+	void GameOver()
+	{
+		snake.Reset();
+		food.position = food.GenerateRandomPos(snake.body);
+		running = false;
+		PlaySound(wallSound);
 	}
 
 	void draw()
