@@ -11,6 +11,7 @@ Color darkGreen = { 43, 51, 24, 255 };
 
 int cellSize = 30;
 int cellCount = 25;
+int offset = 75;
 
 double lastUpdateTime = 0;
 
@@ -132,7 +133,7 @@ public:
 int main()
 {
 	cout << "Starting the game..." << endl;
-	InitWindow(cellSize * cellCount, cellSize * cellCount, "Retro Snake");
+	InitWindow(2*offset + cellSize * cellCount, 2*offset + cellSize * cellCount, "Retro Snake");
 	SetTargetFPS(60);
 
 	Game game = Game();
