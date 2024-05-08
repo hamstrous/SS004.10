@@ -12,7 +12,6 @@ Color darkGreen = { 43, 51, 24, 255 };
 int cellSize = 30;
 int cellCount = 25;
 int offset = 75;
-bool reset = 0;
 
 double lastUpdateTime = 0;
 
@@ -119,24 +118,28 @@ public:
         return position;
     }
 };
-class Game{
-    Snake snake = Snake();
+class Game
+{
+public:
+	Snake snake = Snake();
     Food food = Food(snake.body);
     bool running = true;
     int score = 0;
-
+	Sound eatSound;
+	Sound wallSound;
+	
     Game()
     {
-      InitAudioDevice();
-		  eatSound = LoadSound("Sound/Sounds_eat.mp3");
-		  wallSound = LoadSound("Sound/Sounds_wall.mp3");
+	    InitAudioDevice();
+	    eatSound = LoadSound("Sound/Sounds_eat.mp3");
+	    wallSound = LoadSound("Sound/Sounds_wall.mp3");
     }
 
     ~Game()
     {
-      UnloadSound(eatSound);
-		  UnloadSound(wallSound);
-		  CloseAudioDevice();
+	    UnloadSound(eatSound);
+	    UnloadSound(wallSound);
+	    CloseAudioDevice();
     }
 
     void Draw()
