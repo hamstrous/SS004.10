@@ -114,6 +114,7 @@ class Game
 public:
 	Snake snake = Snake();
 	Food food = Food();
+	int score = 0;
 	bool running = true;
 
 	void CheckCollisionWithFood()
@@ -122,6 +123,7 @@ public:
 		{
 			food.position = food.GenerateRandomPos();
 			snake.addSegment = true;
+			score++;
 		}
 	}
 
@@ -130,6 +132,10 @@ public:
 		food.Draw();
 		snake.Draw();
 		CheckCollisionWithFood();
+	}
+
+	void GameOver() {
+		score = 0;
 	}
 
 	void update()
@@ -211,9 +217,11 @@ int main()
 		}
 		//Drawing
 		ClearBackground(green);
-		DrawRectangleLinesEx(Rectangle{(float)offset-5, (float)offset-5, 
+    DrawRectangleLinesEx(Rectangle{(float)offset-5, (float)offset-5, 
 			(float)cellSize*cellCount+10, (float)cellSize*cellCount+10}, 5, darkGreen);
 		DrawText("Snake", offset -5, 20, 40, darkGreen);
+    
+		DrawText(TextFormat("%i", game.score), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
 		game.draw();
 		EndDrawing();
 	}
