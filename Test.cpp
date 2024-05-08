@@ -119,10 +119,7 @@ public:
         return position;
     }
 };
-
-class Game
-{
-public:
+class Game{
     Snake snake = Snake();
     Food food = Food(snake.body);
     bool running = true;
@@ -130,10 +127,16 @@ public:
 
     Game()
     {
+      InitAudioDevice();
+		  eatSound = LoadSound("Sound/Sounds_eat.mp3");
+		  wallSound = LoadSound("Sound/Sounds_wall.mp3");
     }
 
     ~Game()
     {
+      UnloadSound(eatSound);
+		  UnloadSound(wallSound);
+		  CloseAudioDevice();
     }
 
     void Draw()
@@ -160,6 +163,7 @@ public:
             food.position = food.GenerateRandomPos(snake.body);
             snake.addSegment = true;
             score++;
+            PlaySound(eatSound);
         }
     }
 
@@ -181,6 +185,7 @@ public:
         food.position = food.GenerateRandomPos(snake.body);
         running = false;
         score = 0;
+        PlaySound(wallSound);
     }
 
     void CheckCollisionWithTail()
