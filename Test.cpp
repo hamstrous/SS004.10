@@ -9,8 +9,11 @@ static bool allowMove = false;
 Color green = { 173, 204, 96, 255 };
 Color darkGreen = { 43, 51, 24, 255 };
 
+//kích thước mỗi vị trí trên bản đồ (pixel)
 int cellSize = 30;
+//Số lượng vị trí mỗi hàng và mỗi cột
 int cellCount = 25;
+//Độ dày của ranh giới(pixel)
 int offset = 75;
 
 double lastUpdateTime = 0;
@@ -41,6 +44,7 @@ bool EventTriggered(double interval)
 class Snake
 {
 public:
+    //Vị trí thân rắn
     deque<Vector2> body = { Vector2{6, 9}, Vector2{5, 9}, Vector2{4, 9} };
     Vector2 direction = { 1, 0 };
     bool addSegment = false;
@@ -111,6 +115,7 @@ public:
     Vector2 GenerateRandomPos(deque<Vector2> snakeBody)
     {
         Vector2 position = GenerateRandomCell();
+        //Kiểm tra rắn có chạm vào thức ăn không
         while (ElementInDeque(position, snakeBody))
         {
             position = GenerateRandomCell();
@@ -216,33 +221,28 @@ int main()
 
         if (EventTriggered(0.2))
         {
-            allowMove = true;
             game.Update();
         }
 
-        if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1 && allowMove)
+        if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1)
         {
             game.snake.direction = { 0, -1 };
             game.running = true;
-            allowMove = false;
         }
-        if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1 && allowMove)
+        if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1)
         {
             game.snake.direction = { 0, 1 };
             game.running = true;
-            allowMove = false;
         }
-        if (IsKeyPressed(KEY_LEFT) && game.snake.direction.x != 1 && allowMove)
+        if (IsKeyPressed(KEY_LEFT) && game.snake.direction.x != 1)
         {
             game.snake.direction = { -1, 0 };
             game.running = true;
-            allowMove = false;
         }
-        if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1 && allowMove)
+        if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1)
         {
             game.snake.direction = { 1, 0 };
             game.running = true;
-            allowMove = false;
         }
 
         // Drawing
