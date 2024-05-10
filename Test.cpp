@@ -123,7 +123,7 @@ class Game
 public:
 	Snake snake = Snake();
     Food food = Food(snake.body);
-    bool running = true;
+    bool running = false;
     int score = 0;
 	Sound eatSound;
 	Sound wallSound;
