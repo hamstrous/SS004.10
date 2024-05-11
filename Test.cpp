@@ -218,8 +218,19 @@ int main()
 
     while (WindowShouldClose() == false)
     {
+        BeginDrawing();
+        ClearBackground(green);
+        DrawRectangleLinesEx(Rectangle{ (float)(offset+cellSize*5), (float)(offset+cellSize*13), (float)cellSize * 15, (float)cellSize * 3}, 5, darkGreen);
+        DrawText("Snake", (float)(offset+cellSize*5)+cellSize*3, (float)(offset+cellSize*5), 90, darkGreen);
+        DrawText("Start", (float)(offset+cellSize*5)+cellSize*5, (float)(offset+cellSize*13)+20, 50, darkGreen);
+        EndDrawing();
         if (IsKeyDown(KEY_ENTER))
         {
+            BeginDrawing();
+            DrawRectangleLinesEx(Rectangle{ (float)(offset+cellSize*5), (float)(offset+cellSize*13), (float)cellSize * 15, (float)cellSize * 3}, 5, white);
+            DrawText("Start", (float)(offset+cellSize*5)+cellSize*5, (float)(offset+cellSize*13)+20, 50, white);
+            EndDrawing();
+            lastUpdateTime = GetTime();
             start = true;
         }
         while (start)
