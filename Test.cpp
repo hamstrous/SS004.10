@@ -9,11 +9,11 @@ static bool allowMove = false;
 Color green = { 173, 204, 96, 255 };
 Color darkGreen = { 43, 51, 24, 255 };
 
-//kích thước mỗi vị trí trên bản đồ (pixel)
+//kích thước mỗi ô trên bản đồ (pixel)
 int cellSize = 30;
-//Số lượng vị trí mỗi hàng và mỗi cột
+//Số lượng ô mỗi hàng và mỗi cột
 int cellCount = 25;
-//Độ dày của ranh giới(pixel)
+//Độ rộng của bản đồ(pixel)
 int offset = 75;
 
 double lastUpdateTime = 0;
