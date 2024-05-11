@@ -15,6 +15,7 @@ int cellSize = 30;
 int cellCount = 25;
 //Vị trí pixel trên cùng bên trái của bản đồ
 int offset = 75;
+
 bool start = false;
 double lastUpdateTime = 0;
 
@@ -215,7 +216,6 @@ int main()
     SetTargetFPS(60);
 
     Game game = Game();
-
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
@@ -231,12 +231,14 @@ int main()
             DrawText("Start", (float)(offset+cellSize*5)+cellSize*5, (float)(offset+cellSize*13)+20, 50, white);
             EndDrawing();
             lastUpdateTime = GetTime();
+            while (!EventTriggered(0.5))
+            {
+            }
             start = true;
         }
         while (start)
         {
             BeginDrawing();
-
             if (EventTriggered(0.2))
             {
                 game.Update();
@@ -269,8 +271,11 @@ int main()
             DrawText("Snake", offset - 5, 20, 40, darkGreen);
             DrawText(TextFormat("%i", game.score), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
             game.Draw();
-
             EndDrawing();
+            if (WindowShouldClose())
+            {
+                break;
+            }
         }
     }
     CloseWindow();
