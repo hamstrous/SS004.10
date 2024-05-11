@@ -13,7 +13,7 @@ Color darkGreen = { 43, 51, 24, 255 };
 int cellSize = 30;
 //Số lượng ô mỗi hàng và mỗi cột
 int cellCount = 25;
-//Độ rộng của bản đồ(pixel)
+//Vị trí pixel trên cùng bên trái của bản đồ
 int offset = 75;
 
 double lastUpdateTime = 0;
