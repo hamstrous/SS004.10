@@ -8,7 +8,7 @@ using namespace std;
 static bool allowMove = false;
 Color green = { 173, 204, 96, 255 };
 Color darkGreen = { 43, 51, 24, 255 };
-
+Color white = {255, 255, 255, 255};
 //kích thước mỗi ô trên bản đồ (pixel)
 int cellSize = 30;
 //Số lượng ô mỗi hàng và mỗi cột
@@ -16,6 +16,7 @@ int cellCount = 25;
 //Vị trí pixel trên cùng bên trái của bản đồ
 int offset = 75;
 
+bool start = false;
 double lastUpdateTime = 0;
 
 bool ElementInDeque(Vector2 element, deque<Vector2> deque)
@@ -189,6 +190,7 @@ public:
 
     void GameOver()
     {
+        start = false;
         snake.Reset();
         food.position = food.GenerateRandomPos(snake.body);
         running = false;
@@ -214,45 +216,67 @@ int main()
     SetTargetFPS(60);
 
     Game game = Game();
-
     while (WindowShouldClose() == false)
     {
         BeginDrawing();
-
-        if (EventTriggered(0.2))
-        {
-            game.Update();
-        }
-
-        if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1)
-        {
-            game.snake.direction = { 0, -1 };
-            game.running = true;
-        }
-        if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1)
-        {
-            game.snake.direction = { 0, 1 };
-            game.running = true;
-        }
-        if (IsKeyPressed(KEY_LEFT) && game.snake.direction.x != 1)
-        {
-            game.snake.direction = { -1, 0 };
-            game.running = true;
-        }
-        if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1)
-        {
-            game.snake.direction = { 1, 0 };
-            game.running = true;
-        }
-
-        // Drawing
         ClearBackground(green);
-        DrawRectangleLinesEx(Rectangle{ (float)offset - 5, (float)offset - 5, (float)cellSize * cellCount + 10, (float)cellSize * cellCount + 10 }, 5, darkGreen);
-        DrawText("Snake", offset - 5, 20, 40, darkGreen);
-        DrawText(TextFormat("%i", game.score), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
-        game.Draw();
-
+        DrawRectangleLinesEx(Rectangle{ (float)(offset+cellSize*5), (float)(offset+cellSize*13), (float)cellSize * 15, (float)cellSize * 3}, 5, darkGreen);
+        DrawText("Snake", (float)(offset+cellSize*5)+cellSize*3, (float)(offset+cellSize*5), 90, darkGreen);
+        DrawText("Start", (float)(offset+cellSize*5)+cellSize*5, (float)(offset+cellSize*13)+20, 50, darkGreen);
         EndDrawing();
+        if (IsKeyDown(KEY_ENTER))
+        {
+            BeginDrawing();
+            DrawRectangleLinesEx(Rectangle{ (float)(offset+cellSize*5), (float)(offset+cellSize*13), (float)cellSize * 15, (float)cellSize * 3}, 5, white);
+            DrawText("Start", (float)(offset+cellSize*5)+cellSize*5, (float)(offset+cellSize*13)+20, 50, white);
+            EndDrawing();
+            lastUpdateTime = GetTime();
+            while (!EventTriggered(0.5))
+            {
+            }
+            start = true;
+        }
+        while (start)
+        {
+            BeginDrawing();
+            if (EventTriggered(0.2))
+            {
+                game.Update();
+            }
+
+            if (IsKeyPressed(KEY_UP) && game.snake.direction.y != 1)
+            {
+                game.snake.direction = { 0, -1 };
+                game.running = true;
+            }
+            if (IsKeyPressed(KEY_DOWN) && game.snake.direction.y != -1)
+            {
+                game.snake.direction = { 0, 1 };
+                game.running = true;
+            }
+            if (IsKeyPressed(KEY_LEFT) && game.snake.direction.x != 1)
+            {
+                game.snake.direction = { -1, 0 };
+                game.running = true;
+            }
+            if (IsKeyPressed(KEY_RIGHT) && game.snake.direction.x != -1)
+            {
+                game.snake.direction = { 1, 0 };
+                game.running = true;
+            }
+
+            // Drawing
+            ClearBackground(green);
+            DrawRectangleLinesEx(Rectangle{ (float)offset - 5, (float)offset - 5, (float)cellSize * cellCount + 10, (float)cellSize * cellCount + 10 }, 5, darkGreen);
+            DrawText("Snake", offset - 5, 20, 40, darkGreen);
+            DrawText(TextFormat("%i", game.score), offset - 5, offset + cellSize * cellCount + 10, 40, darkGreen);
+            game.Draw();
+            EndDrawing();
+            if (WindowShouldClose())
+            {
+                break;
+            }
+        }
     }
     CloseWindow();
     return 0;
