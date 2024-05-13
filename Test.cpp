@@ -16,8 +16,6 @@ int cellCount = 25;
 //Vị trí pixel trên cùng bên trái của bản đồ
 int offset = 75;
 
-bool reset;
-
 bool start = false;
 double lastUpdateTime = 0;
 
