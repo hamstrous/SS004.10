@@ -1,7 +1,7 @@
 #include <iostream>
-#include <raylib.h>
+#include "raylib.h"
 #include <deque>
-#include <raymath.h>
+#include "raymath.h"
 
 using namespace std;
 
