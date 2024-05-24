@@ -124,6 +124,7 @@ public:
         return position;
     }
 };
+
 class Game
 {
 public:
