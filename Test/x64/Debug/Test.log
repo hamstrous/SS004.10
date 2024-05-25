@@ -1,13 +1,23 @@
 ﻿  Test.cpp
 D:\Github\SS004.10\Test.cpp(1,1): warning C4819: The file contains a character that cannot be represented in the current code page (936). Save the file in Unicode format to prevent data loss
-D:\Github\SS004.10\Test.cpp(106,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(106,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(111,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Github\SS004.10\Test.cpp(112,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-D:\Github\SS004.10\Test.cpp(224,89): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(224,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(225,106): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(225,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(231,97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-D:\Github\SS004.10\Test.cpp(231,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(70,100): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(70,46): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(78,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(78,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(86,104): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(86,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(94,81): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(94,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(140,69): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(140,37): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(145,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Github\SS004.10\Test.cpp(146,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
+D:\Github\SS004.10\Test.cpp(259,89): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(259,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(260,106): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(260,58): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(266,97): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+D:\Github\SS004.10\Test.cpp(266,57): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+  LINK : D:\Github\SS004.10\x64\Debug\Test.exe not found or not built by the last incremental link; performing full link
+LINK : warning LNK4098: defaultlib 'MSVCRT' conflicts with use of other libs; use /NODEFAULTLIB:library
   Test.vcxproj -> D:\Github\SS004.10\x64\Debug\Test.exe
